@@ -9,12 +9,12 @@ def red_green_neutral(analis):
 		return '' 
 		
 	elif analis.summary['RECOMMENDATION'] in ["SELL", 'STRONG_SELL']:
-		print (Fore.RED + analis.symbol, analis.summary['RECOMMENDATION'])
+		print (Fore.RED + analis.symbol, analis.summary['RECOMMENDATION'], 'BUY Signals:', analis.summary['BUY'], 'SELL Signals:', analis.summary['SELL'])
 	elif analis.summary['RECOMMENDATION'] in ['BUY', 'STRONG_BUY']:
-		print (Fore.GREEN + analis.symbol, analis.summary['RECOMMENDATION'])
+		print (Fore.GREEN + analis.symbol, analis.summary['RECOMMENDATION'], 'BUY Signals:',analis.summary['BUY'], 'SELL Signals:', analis.summary['SELL'])
 	
 	else:	
-		print (Fore.CYAN + analis.symbol, analis.summary['RECOMMENDATION'])
+		print (Fore.CYAN + analis.symbol, analis.summary['RECOMMENDATION'], 'BUY Signals:', analis.summary['BUY'], 'SELL Signals:', analis.summary['SELL'])
 
 def analysis(symbols):
 	result = get_multiple_analysis(screener='Crypto',
@@ -25,7 +25,7 @@ def analysis(symbols):
 all_binance_pairs = 'tickers.txt'
 only_usd_pairs = 'binance_dollar_pairs.txt'
 
-with open(all_binance_pairs) as file:
+with open(only_usd_pairs) as file:
 	symbols = eval(file.read())
 
 if len(sys.argv) > 1:
