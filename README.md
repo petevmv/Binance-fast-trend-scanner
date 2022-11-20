@@ -9,7 +9,7 @@ open `scanner.py` with text editor and find the following line of code
 
 `with open(all_binance_pairs) as file:`
 
-and replace it one of the two choises above. (`only_usd_pairs` or `all_binance_pairs`)
+and replace it with one of the two choises above. (`only_usd_pairs` or `all_binance_pairs`)
     
     
 
