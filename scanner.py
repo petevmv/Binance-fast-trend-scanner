@@ -1,7 +1,9 @@
 import sys
 from tradingview_ta import *
 import colorama
-from colorama import Fore
+from colorama import Fore, Style
+
+
 
 def red_green_neutral(analis):
 	# print(analis.summary['RECOMMENDATION'])
@@ -10,12 +12,14 @@ def red_green_neutral(analis):
 		
 	elif analis.summary['RECOMMENDATION'] in ["SELL", 'STRONG_SELL']:
 		print (Fore.RED + analis.symbol, analis.summary['RECOMMENDATION'], 'BUY Signals:', analis.summary['BUY'], 'SELL Signals:', analis.summary['SELL'])
+		print(Style.RESET_ALL)
 	elif analis.summary['RECOMMENDATION'] in ['BUY', 'STRONG_BUY']:
 		print (Fore.GREEN + analis.symbol, analis.summary['RECOMMENDATION'], 'BUY Signals:',analis.summary['BUY'], 'SELL Signals:', analis.summary['SELL'])
-	
+		print(Style.RESET_ALL)
 	else:	
 		print (Fore.CYAN + analis.symbol, analis.summary['RECOMMENDATION'], 'BUY Signals:', analis.summary['BUY'], 'SELL Signals:', analis.summary['SELL'])
-
+		print(Style.RESET_ALL)
+	
 def analysis(symbols):
 	result = get_multiple_analysis(screener='Crypto',
 								 interval=Interval.INTERVAL_5_MINUTES,
@@ -37,11 +41,13 @@ if len(sys.argv) > 1:
 	for symbol in searced_list:
 		# print(searced_list)
 		red_green_neutral(analysis[symbol])
+		
 
 else:
 	analysis = analysis(symbols)
 	for symbol in symbols:
 		red_green_neutral(analysis[symbol])
+		
 # handler = TA_Handler(symbol = ["BTCBUSD", "SOLBUSD", "ETHBUSD"],
 # 					screener = 'Crypto',
 # 					exchange = 'Binance',
